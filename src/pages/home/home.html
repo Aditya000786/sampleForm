@@ -1,14 +1,31 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
+    <ion-buttons end>
+        <button ion-button icon-only (click)="newProject()"><ion-icon name="add"></ion-icon></button>
+    </ion-buttons>
     <ion-title>
-      Ionic Blank
+      Projects
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+    <ion-card *ngIf="!isThereAnyProject">
+        <ion-card-header class="my-project-header">
+            No Ongoing Projects
+        </ion-card-header>
+        <ion-card-content>
+            <p>You are currently not doing any Project</p>
+        </ion-card-content>
+    </ion-card>
+
+    <ng-container *ngIf="isThereAnyProject">
+        <ion-card *ngFor="let project of projects" (click)="goToProject(project)">
+            <ion-card-header class="my-project-header">{{project.name}}</ion-card-header>
+            <ion-card-content>
+                <p>{{project?.aboutProject}}</p>
+                <p class="client client-before">{{project?.clientName}}</p>
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
 </ion-content>

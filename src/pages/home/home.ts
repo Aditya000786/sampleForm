@@ -42,8 +42,7 @@ export class HomePage implements OnInit {
       let name="Week "+(i+1);
 
       
-      let week=new WeekModel(name,startDate,7);
-      
+      let week=new WeekModel(name,startDate,7);      
       console.log("Week.name="+week.name);
       console.log("Week.StartDate="+week.startDate);
       console.log("StartDate="+startDate);

@@ -16,7 +16,6 @@ import {DateModel} from '../../models/DateModel';
       day.totalSeconds++;},1000);
    }
 //     },1000);
-  
 // }
 
    stopTimer(day:DateModel){

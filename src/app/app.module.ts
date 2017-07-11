@@ -7,11 +7,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ProjectProvider } from '../providers/project/project';
+import { TimerProvider } from '../providers/timer/timer';
+import { HoursMinutesSecondsPipe } from '../pipes/hours-minutes-seconds/hours-minutes-seconds';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    // HoursMinutesSecondsPipe
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,11 @@ import { ProjectProvider } from '../providers/project/project';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ProjectProvider
-  ]
+    ProjectProvider,
+    TimerProvider
+  ],
+  // exports:[
+  //   HoursMinutesSecondsPipe
+  // ]
 })
 export class AppModule {}

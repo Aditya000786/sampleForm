@@ -1,3 +1,4 @@
 export class DateModel{
-    constructor(public name:string,public date:Date,public totalHours:number=null,public unChargedHours:number=null,public chargedHours:number=null){}
+    constructor(public name:string,public date:Date,public dayActive:boolean=false,public totalSeconds:number=null,public unChargedSeconds:number=null,
+        public chargedSeconds:number=null){}
 }

@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {WeekModel} from '../../models/WeekModel';
+import {TimerProvider} from '../../providers/timer/timer';
 /**
  * Generated class for the WeekDetailPage page.
  *
@@ -29,11 +30,22 @@ export class WeekDetailPage implements OnInit {
     console.log("week.startDate="+this.week.startDate);
     console.log("week.days="+this.week.days);
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public timerProvider:TimerProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WeekDetailPage');
+  }
+
+  toggleTimer(day){
+    if(!day.dayActive){
+      if(!this.timerProvider.timerActive){
+        this.timerProvider.startTimer(day);
+      }
+    }
+    else{
+      this.timerProvider.stopTimer(day);
+    }
   }
 
 }

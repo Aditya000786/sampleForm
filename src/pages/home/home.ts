@@ -35,35 +35,50 @@ export class HomePage implements OnInit {
     let weeks:WeekModel[]=[];
     let i=0;
 
+  // startDate.setDate(startDate.getDate()-7);
 
     for(i=0;i<numberOfWeeks;i++){
 
       let name="Week "+(i+1);
-      var nextDate=new Date(startDate);
 
-      console.log("NextDate="+nextDate);
       
-      let week=new WeekModel(name,nextDate,7);
+      let week=new WeekModel(name,startDate,7);
       
       console.log("Week.name="+week.name);
       console.log("Week.StartDate="+week.startDate);
+      console.log("StartDate="+startDate);
       
       startDate.setDate(startDate.getDate()+7);
+      console.log("StartDate="+startDate);
       // nextDate.setDate(startDate.getDate()+7*(i+1));
 
-      console.log("Week.name="+week.name);
-      console.log("Week.StartDate="+week.startDate);
       weeks.push(week);  
+      for(let j=0;j<i;j++){
+        console.log("week name="+weeks[j].name);
+        console.log("week startDate="+weeks[j].startDate);
+      }
   }
-
+  for(let i=0;i<numberOfWeeks;i++){
+      console.log("week name="+weeks[i].name);
+      console.log("week startDate="+weeks[i].startDate);
+    }
 
     if(lastWeek>0){
+      console.log("For last Week:");
+      console.log("StartDate="+startDate);
+
       let name="Week "+(i+1);
       let week=new WeekModel(name,startDate,lastWeek);
+      console.log("NextDate="+startDate);
+      console.log("week.startDate="+week.startDate);
       console.log("Week="+week);
       weeks.push(week);
     }
 
+    for(let i=0;i<numberOfWeeks;i++){
+      console.log("week name="+weeks[i].name);
+      console.log("week startDate="+weeks[i].startDate);
+    }
 
 
      this.projectProvider.addProject('Development','TATA Motors','1st Project being developed for a big Firm, excited to begin with.',

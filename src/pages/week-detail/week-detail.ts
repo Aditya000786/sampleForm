@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,ModalController } from 'ionic-angular';
 
 import {WeekModel} from '../../models/WeekModel';
 import {TimerProvider} from '../../providers/timer/timer';
@@ -30,7 +30,8 @@ export class WeekDetailPage implements OnInit {
     console.log("week.startDate="+this.week.startDate);
     console.log("week.days="+this.week.days);
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams,public timerProvider:TimerProvider) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,
+    public timerProvider:TimerProvider,public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -42,9 +43,25 @@ export class WeekDetailPage implements OnInit {
       if(!this.timerProvider.timerActive){
         this.timerProvider.startTimer(day);
       }
+       else {
+ 
+                let alert = this.alertCtrl.create({
+                    title: 'Oops!',
+                    subTitle: 'You are already timing a project. You must stop it before timing a new project.',
+                    buttons: ['OK']
+                });
+ 
+                alert.present();
+    
+            }
     }
     else{
-      this.timerProvider.stopTimer(day);
+      let totalTime= this.timerProvider.stopTimer(day);
+      console.log("TotalTime="+totalTime);
+      let modal = this.modalCtrl.create('stop', {
+                totalTime:totalTime
+            });
+              modal.present();
     }
   }
 

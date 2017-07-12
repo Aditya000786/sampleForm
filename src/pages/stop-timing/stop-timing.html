@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>Finished</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+<p>Nice Work! You have Finished working on this project today for now.</p>
+<p>Below is the time that you have spent working on this session.Leave it as it is,you will be payed for this much.</p>
+<p>If you wanna give some discount,or spent a little too long on Youtube,please edit it.</p>
+<ion-list no-lines>
+ 
+        <ion-item>
+            <ion-label text-right>Total Time: </ion-label>
+            <ion-input [(ngModel)]="totalTime" type="tel"></ion-input>
+        </ion-item>
+ 
+        <ion-item>
+            <ion-label text-right>Charged Time: </ion-label>
+            <ion-input [(ngModel)]="chargedTime" type="tel"></ion-input>
+        </ion-item>
+ 
+        <ion-item>
+            <ion-label text-right>Uncharged Time: </ion-label>
+            <ion-input [(ngModel)]="unchargedTime" type="tel"></ion-input>
+        </ion-item>
+ 
+    </ion-list>   
+     <button color='primary' outline ion-button (click)="submitTime()">Save Time</button> 
+</ion-content>

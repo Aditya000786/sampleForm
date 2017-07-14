@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <ion-list>
+  
     <ion-item>
       <br>
       <h3>{{project?.clientName}}</h3>
@@ -28,11 +28,14 @@
     <ion-item>
       <p>{{project?.endDate}}</p>
     </ion-item>
-  </ion-list>
-  <ion-list>
-    <button ion-item *ngFor="let week of project?.weeks" (click)="goToWeekDetail(week)">
+  
+  
+    <ion-item *ngFor="let week of project?.weeks">
+      <button class="my" ion-item no-lines (click)="goToWeekDetail(week)">
       {{week.name}}
       <p>{{week.startDate}}</p>
-    </button>
-  </ion-list>
+      </button>
+      <button ion-button (click)="detail(week)">Detail</button>
+    </ion-item>
+  
 </ion-content>

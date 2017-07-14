@@ -17,10 +17,13 @@
 <p>
   {{week?.startDate}}
 </p>
-<ion-list>
-  <button ion-item *ngFor="let day of week?.days" (click)="toggleTimer(day)">
-    <h5>{{day?.name}}</h5>
+
+<ion-item *ngFor="let day of week?.days">
+  <button class="my" ion-item no-lines (click)="toggleTimer(day)">
+    {{day?.name}}
     <p>{{day?.totalSeconds | hoursminutesseconds}}</p>
   </button>
-</ion-list>
+  <button ion-button (click)="detail(day)">Detail</button>
+</ion-item>
+
 </ion-content>

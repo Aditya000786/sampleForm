@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController,ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,ModalController,ActionSheetController } from 'ionic-angular';
 
 import {WeekModel} from '../../models/WeekModel';
 import {TimerProvider} from '../../providers/timer/timer';
@@ -23,19 +23,42 @@ export class WeekDetailPage implements OnInit {
     this.week.name=this.navParams.get('name');
     this.week.startDate=this.navParams.get('startDate');
     this.week.days=this.navParams.get('days');
-    console.log("week detail");
+    // console.log("week detail");
     // this.week=this.navParams.data;
-    console.log("WEEK="+this.week);
-    console.log("week.name="+this.week.name);
-    console.log("week.startDate="+this.week.startDate);
-    console.log("week.days="+this.week.days);
+    // console.log("WEEK="+this.week);
+    // console.log("week.name="+this.week.name);
+    // console.log("week.startDate="+this.week.startDate);
+    // console.log("week.days="+this.week.days);
   }
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,
-    public timerProvider:TimerProvider,public modalCtrl: ModalController) {
+    public timerProvider:TimerProvider,public modalCtrl: ModalController,public actionSheetCtrl:ActionSheetController) {
   }
+    detail(day){
+      console.log("acca")
+      const actionSheet=this.actionSheetCtrl.create({
+        title:'Details',
+        buttons:[
+          {
+            text:'Total Time: '+day.totalSeconds,
+            // role:'cancel'
+          },
+          {
+            text:'Charged Time: '+day.chargedSeconds,
+            // role:'cancel'
+          },
+          {
+            text:'UnCharged Time: '+day.unChargedSeconds,
+            role:'cancel'
+          }
+        ]
+      });
+      actionSheet.present();
+
+      console.log("acca")
+    }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WeekDetailPage');
+    // console.log('ionViewDidLoad WeekDetailPage');
   }
 
   toggleTimer(day){
@@ -61,6 +84,14 @@ export class WeekDetailPage implements OnInit {
       let modal = this.modalCtrl.create('stop', {
                 totalTime:totalTime
             });
+              modal.onDidDismiss((time)=>{
+                console.log("time.totalTime="+time.total);
+                console.log("time.chargedTime="+time.charged);
+                console.log("unchargedTime="+time.uncharged);
+                day.totalSeconds=parseInt(time.total);
+                day.chargedSeconds=parseInt(time.charged);
+                day.unChargedSeconds=parseInt(time.uncharged);
+              });
               modal.present();
     }
   }

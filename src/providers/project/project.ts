@@ -23,7 +23,7 @@ export class ProjectProvider {
 
 
   getProjects(){
-    console.log("Visited");
+    // console.log("Visited");
     return this.projects.slice();
   }
 

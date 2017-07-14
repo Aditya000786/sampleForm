@@ -29,8 +29,8 @@ export class HomePage implements OnInit {
     diff++;
     let numberOfWeeks=Math.floor(diff/7);
     let lastWeek=diff%7;
-    console.log("Number Of weeks="+numberOfWeeks);
-    console.log("Last Week="+lastWeek);
+    // console.log("Number Of weeks="+numberOfWeeks);
+    // console.log("Last Week="+lastWeek);
     
     let weeks:WeekModel[]=[];
     let i=0;
@@ -43,40 +43,40 @@ export class HomePage implements OnInit {
 
       
       let week=new WeekModel(name,startDate,7);      
-      console.log("Week.name="+week.name);
-      console.log("Week.StartDate="+week.startDate);
-      console.log("StartDate="+startDate);
+      // console.log("Week.name="+week.name);
+      // console.log("Week.StartDate="+week.startDate);
+      // console.log("StartDate="+startDate);
       
       startDate.setDate(startDate.getDate()+7);
-      console.log("StartDate="+startDate);
+      // console.log("StartDate="+startDate);
       // nextDate.setDate(startDate.getDate()+7*(i+1));
 
       weeks.push(week);  
       for(let j=0;j<i;j++){
-        console.log("week name="+weeks[j].name);
-        console.log("week startDate="+weeks[j].startDate);
+        // console.log("week name="+weeks[j].name);
+        // console.log("week startDate="+weeks[j].startDate);
       }
   }
   for(let i=0;i<numberOfWeeks;i++){
-      console.log("week name="+weeks[i].name);
-      console.log("week startDate="+weeks[i].startDate);
+      // console.log("week name="+weeks[i].name);
+      // console.log("week startDate="+weeks[i].startDate);
     }
 
     if(lastWeek>0){
-      console.log("For last Week:");
-      console.log("StartDate="+startDate);
+      // console.log("For last Week:");
+      // console.log("StartDate="+startDate);
 
       let name="Week "+(i+1);
       let week=new WeekModel(name,startDate,lastWeek);
-      console.log("NextDate="+startDate);
-      console.log("week.startDate="+week.startDate);
-      console.log("Week="+week);
+      // console.log("NextDate="+startDate);
+      // console.log("week.startDate="+week.startDate);
+      // console.log("Week="+week);
       weeks.push(week);
     }
 
     for(let i=0;i<numberOfWeeks;i++){
-      console.log("week name="+weeks[i].name);
-      console.log("week startDate="+weeks[i].startDate);
+      // console.log("week name="+weeks[i].name);
+      // console.log("week startDate="+weeks[i].startDate);
     }
 
 
@@ -104,8 +104,8 @@ export class HomePage implements OnInit {
     diff++;
     let numberOfWeeks=Math.floor(diff/7);
     let lastWeek=diff%7;
-    console.log("Number Of weeks="+numberOfWeeks);
-    console.log("Last Week="+lastWeek);
+    // console.log("Number Of weeks="+numberOfWeeks);
+    // console.log("Last Week="+lastWeek);
     
     let weeks:WeekModel[]=[];
     let i=0;
@@ -116,18 +116,18 @@ export class HomePage implements OnInit {
       let name="Week "+(i+1);
       var nextDate=new Date(startDate);
 
-      console.log("NextDate="+nextDate);
+      // console.log("NextDate="+nextDate);
       
       let week=new WeekModel(name,nextDate,7);
       
-      console.log("Week.name="+week.name);
-      console.log("Week.StartDate="+week.startDate);
+      // console.log("Week.name="+week.name);
+      // console.log("Week.StartDate="+week.startDate);
       
       startDate.setDate(startDate.getDate()+7);
       // nextDate.setDate(startDate.getDate()+7*(i+1));
 
-      console.log("Week.name="+week.name);
-      console.log("Week.StartDate="+week.startDate);
+      // console.log("Week.name="+week.name);
+      // console.log("Week.StartDate="+week.startDate);
       weeks.push(week);  
   }
 
@@ -135,18 +135,18 @@ export class HomePage implements OnInit {
     if(lastWeek>0){
       let name="Week "+(i+1);
       let week=new WeekModel(name,startDate,lastWeek);
-      console.log("Week="+week);
+      // console.log("Week="+week);
       weeks.push(week);
     }
     
-    console.log("Did Load");
+    // console.log("Did Load");
      this.projectProvider.addProject('Aditya','Kanakiya Jewellers','1st Project being developed for a jeweller, excited to begin with.',
     '2017-5-9','2017-8-12',weeks);
   }
 
   ionViewWillEnter(){
     this.projects=this.projectProvider.getProjects();
-    console.log(this.projects);
+    // console.log(this.projects);
     if(this.projects.length==0){
       this.isThereAnyProject=false;
     }

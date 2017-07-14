@@ -24,12 +24,14 @@ export class ProjectDetailPage implements OnInit {
   goToWeekDetail(week:WeekModel){
     console.log(week);
     // this.navCtrl.push('weekDetail',{week});
-    console.log("Week.name="+week.name);
-    console.log("Week.startDate="+week.startDate);
-    console.log("Week.days="+week.days);
+    // console.log("Week.name="+week.name);
+    // console.log("Week.startDate="+week.startDate);
+    // console.log("Week.days="+week.days);
     this.navCtrl.push('weekDetail',{name:week.name,startDate:week.startDate,days:week.days});
   }
-
+  detail(week){
+    console.log("Week="+week);
+  }
    ngOnInit(){
      this.project.name=this.navParams.get('name');
      this.project.clientName=this.navParams.get('clientName');
@@ -63,7 +65,7 @@ export class ProjectDetailPage implements OnInit {
    }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProjectDetailPage');
+    // console.log('ionViewDidLoad ProjectDetailPage');
   }
 
 }

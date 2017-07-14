@@ -54,28 +54,28 @@ export class EditProjectPage implements OnInit{
       let name="Week "+(i+1);
       var nextDate=new Date(startDate);
 
-      console.log("NextDate="+nextDate);
+      // console.log("NextDate="+nextDate);
       
       let week=new WeekModel(name,nextDate,7);
       
-      console.log("Week.name="+week.name);
-      console.log("Week.StartDate="+week.startDate);
+      // console.log("Week.name="+week.name);
+      // console.log("Week.StartDate="+week.startDate);
       
       startDate.setDate(startDate.getDate()+7);
       // nextDate.setDate(startDate.getDate()+7*(i+1));
 
-      console.log("Week.name="+week.name);
-      console.log("Week.StartDate="+week.startDate);
+      // console.log("Week.name="+week.name);
+      // console.log("Week.StartDate="+week.startDate);
       weeks.push(week);  
   }
   
     if(lastWeek>0){
       let name="Week "+(i+1);
       let week=new WeekModel(name,startDate,lastWeek);
-      console.log("Week="+week);
+      // console.log("Week="+week);
       weeks.push(week);
     }
-    console.log("Weeks="+weeks);
+    // console.log("Weeks="+weeks);
 
     this.projectProvider.addProject(form.value.name,form.value.clientName,form.value.aboutProject,form.value.startDate,
     form.value.endDate,weeks);

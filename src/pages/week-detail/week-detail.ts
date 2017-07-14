@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,AlertController,ModalController,Act
 
 import {WeekModel} from '../../models/WeekModel';
 import {TimerProvider} from '../../providers/timer/timer';
+import {ConversionProvider} from '../../providers/conversion/conversion';
 /**
  * Generated class for the WeekDetailPage page.
  *
@@ -31,7 +32,8 @@ export class WeekDetailPage implements OnInit {
     // console.log("week.days="+this.week.days);
   }
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,
-    public timerProvider:TimerProvider,public modalCtrl: ModalController,public actionSheetCtrl:ActionSheetController) {
+    public timerProvider:TimerProvider,public modalCtrl: ModalController,public actionSheetCtrl:ActionSheetController,
+  public conversionProvider:ConversionProvider) {
   }
     detail(day){
       console.log("acca")
@@ -39,15 +41,21 @@ export class WeekDetailPage implements OnInit {
         title:'Details',
         buttons:[
           {
-            text:'Total Time: '+day.totalSeconds,
+            text:'Total Time: '+this.conversionProvider.getHours(day.totalSeconds)+'Hrs '+
+            this.conversionProvider.getMinutes(day.totalSeconds)+' Min '+
+            this.conversionProvider.getSeconds(day.totalSeconds)+' Sec',
             // role:'cancel'
           },
           {
-            text:'Charged Time: '+day.chargedSeconds,
+            text:'Charged Time: '+this.conversionProvider.getHours(day.chargedSeconds)+'Hrs '+
+            this.conversionProvider.getMinutes(day.chargedSeconds)+' Min '+
+            this.conversionProvider.getSeconds(day.chargedSeconds)+' Sec',
             // role:'cancel'
           },
           {
-            text:'UnCharged Time: '+day.unChargedSeconds,
+            text:'UnCharged Time: '+this.conversionProvider.getHours(day.unChargedSeconds)+'Hrs '+
+            this.conversionProvider.getMinutes(day.unChargedSeconds)+' Min '+
+            this.conversionProvider.getSeconds(day.unChargedSeconds)+' Sec',
             role:'cancel'
           }
         ]

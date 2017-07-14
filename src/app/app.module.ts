@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ProjectProvider } from '../providers/project/project';
 import { TimerProvider } from '../providers/timer/timer';
+import { ConversionProvider } from '../providers/conversion/conversion';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { TimerProvider } from '../providers/timer/timer';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProjectProvider,
-    TimerProvider
+    TimerProvider,
+    ConversionProvider
   ],
   // exports:[
   //   HoursMinutesSecondsPipe

@@ -15,7 +15,7 @@ export class HoursMinutesSecondsPipe {
    * Takes a value and makes it lowercase.
    */
   transform(value, ...args) {
-    console.log("Value="+value);
+    // console.log("Value="+value);
     let t1=0;
     let minutes=value;
     while(1){
@@ -23,7 +23,13 @@ export class HoursMinutesSecondsPipe {
     if(minutes<60){
       break;
     }
-    t1++;
+    if(minutes>=60){
+      minutes-=60;
+      t1++;
+    }
+    if(minutes<60){
+      break;
+    }
     }
     let hours=t1;
     let seconds=Math.floor(value%60);

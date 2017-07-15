@@ -23,23 +23,33 @@ export class ConversionProvider {
   }
   
   getMinutes(seconds:number):number{
-    console.log("seconds="+seconds);
+    // console.log("seconds="+seconds);
     let minutes=seconds;
     while(1){
+      minutes=(minutes/60);
     if(minutes<60){
+      // console.log("If Condition Satisfied");
       break;
     }
-    minutes=(minutes/60);
+    if(minutes>=60){
+      minutes-=60;
+    }
     if(minutes<60){
+      // console.log("If Condition Satisfied");
       break;
     }
-    minutes-=60;
+    // if(minutes<60){
+    //   break;
+    // }
+    // minutes-=60;
     }
-  console.log("minutes="+minutes);
+  // console.log("minutes="+minutes);
     return Math.floor(minutes);
   }
 
   getSeconds(seconds:number):number{
     return(Math.floor(seconds%60));
   }
+
+  
 }

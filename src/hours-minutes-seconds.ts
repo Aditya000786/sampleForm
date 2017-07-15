@@ -1,4 +1,4 @@
-import { Pipe,Injectable, PipeTransform } from '@angular/core';
+import { Pipe,Injectable } from '@angular/core';
 
 /**
  * Generated class for the HoursMinutesSecondsPipe pipe.

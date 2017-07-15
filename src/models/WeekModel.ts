@@ -1,6 +1,7 @@
 import {DateModel} from './DateModel';
 export class WeekModel{
-    constructor(public name:string,public startDate:Date,public numberOfDays:number,public days:DateModel[]=[]){
+    constructor(public name:string,public startDate:Date,public numberOfDays:number,public totalSeconds=0,
+        public chargedSeconds=0,public unChargedSeconds=0,public days:DateModel[]=[]){
         // console.log("startDate="+startDate);
         var weekday = new Array(7);
         weekday[0] =  "Sunday";

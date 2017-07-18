@@ -15,25 +15,10 @@ export class HoursMinutesSecondsPipe {
    * Takes a value and makes it lowercase.
    */
   transform(value, ...args) {
-    // console.log("Value="+value);
-    let t1=0;
-    let minutes=value;
-    while(1){
-    minutes=Math.floor(minutes/60);
-    if(minutes<60){
-      break;
-    }
-    if(minutes>=60){
-      minutes-=60;
-      t1++;
-    }
-    if(minutes<60){
-      break;
-    }
-    }
-    let hours=t1;
-    let seconds=Math.floor(value%60);
-    // console.log(hours + "hrs, " +minutes +" mins, "+seconds +" secs");
-    return hours + "hrs, " +minutes +" mins, "+seconds +" secs";
+    var hours=Math.floor(value/3600);
+    let t=value%3600;
+    var min=Math.floor(t/60);
+    var sec=Math.floor(t%60);
+    return hours + "hrs, " +min +" mins, "+sec +" secs";
   }
 }

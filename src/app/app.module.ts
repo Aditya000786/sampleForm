@@ -9,7 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { ProjectProvider } from '../providers/project/project';
 import { TimerProvider } from '../providers/timer/timer';
 import { ConversionProvider } from '../providers/conversion/conversion';
-
+import { AuthProvider } from '../providers/auth/auth';
+import { Http,HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ConversionProvider } from '../providers/conversion/conversion';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -32,7 +34,8 @@ import { ConversionProvider } from '../providers/conversion/conversion';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProjectProvider,
     TimerProvider,
-    ConversionProvider
+    ConversionProvider,
+    AuthProvider
   ],
   // exports:[
   //   HoursMinutesSecondsPipe

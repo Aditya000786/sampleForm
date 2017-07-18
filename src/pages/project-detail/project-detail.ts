@@ -19,10 +19,39 @@ import {ConversionProvider} from '../../providers/conversion/conversion';
 })
 
 export class ProjectDetailPage implements OnInit {
-  project=new ProjectModel('','','','','',[]);
+  project=new ProjectModel('','','','','','',0,0,0,[]);
+  index:number=0;
   constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl:ActionSheetController,
   public conversionProvider:ConversionProvider) {
   }
+     ngOnInit(){
+       this.project=this.navParams.get('project');
+       console.log("Project="+this.project);
+       console.log("Project.name="+this.project.name);
+       this.project.name=this.navParams.get('name');
+       this.project.clientName=this.navParams.get('clientName');
+       this.project.aboutProject=this.navParams.get('aboutProject');
+       this.project.startDate=this.navParams.get('startDate');
+       this.project.endDate=this.navParams.get('endDate');
+       this.project.weeks=this.navParams.get('weeks');
+       this.index=this.navParams.get('index');
+       console.log("index="+this.index);
+       console.log("Project.Weeks="+this.project.weeks);
+    
+  //   let lastWeek=diff%7;
+  //   console.log("Number Of weeks="+numberOfWeeks);
+  //   console.log("Last Week="+lastWeek);
+
+
+  //   let project=this.navParams.get('project');
+
+
+  //   console.log("Project.Name="+project.name);
+  //   for(let i=0;i<numberOfWeeks;i++){
+  //     let week=new WeekModel();
+  //     this.project.weeks.push(week);
+  //   }
+   }
 
   goToWeekDetail(week:WeekModel){
     console.log(week);
@@ -92,30 +121,7 @@ export class ProjectDetailPage implements OnInit {
     return sum;
   }
 
-   ngOnInit(){
-     this.project.name=this.navParams.get('name');
-     this.project.clientName=this.navParams.get('clientName');
-     this.project.aboutProject=this.navParams.get('aboutProject');
-     this.project.startDate=this.navParams.get('startDate');
-     this.project.endDate=this.navParams.get('endDate');
-     this.project.weeks=this.navParams.get('weeks');
 
-     console.log("Project.Weeks="+this.project.weeks);
-    
-  //   let lastWeek=diff%7;
-  //   console.log("Number Of weeks="+numberOfWeeks);
-  //   console.log("Last Week="+lastWeek);
-
-
-  //   let project=this.navParams.get('project');
-
-
-  //   console.log("Project.Name="+project.name);
-  //   for(let i=0;i<numberOfWeeks;i++){
-  //     let week=new WeekModel();
-  //     this.project.weeks.push(week);
-  //   }
-   }
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad ProjectDetailPage');
@@ -132,6 +138,7 @@ export class ProjectDetailPage implements OnInit {
     let oneDay=1000*60*60*24;
     diff=Math.round(diff/oneDay);
     let numberOfWeeks=Math.floor(diff/7);
+    
     for(let i=0;i<=numberOfWeeks;i++){
       this.project.weeks[i].totalSeconds=this.getWeekTotalTime(this.project.weeks[i]);
       this.project.weeks[i].chargedSeconds=this.getWeekChargedTime(this.project.weeks[i]);

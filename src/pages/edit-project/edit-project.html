@@ -13,32 +13,26 @@
 </ion-header>
 
 <ion-content padding>
-<form #f="ngForm" (ngSubmit)="addProject(f)">
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
   <ion-list>
     <ion-item>
       <ion-label fixed>Name</ion-label>
-      <ion-input type="text" name="name" aria-placeholder="Name" required ngModel ></ion-input>
+      <ion-input type="text" formControlName="name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label fixed>Client Name</ion-label>
-      <ion-input tye="text" name="clientName" required ngModel></ion-input>
+      <ion-input type="text" formControlName="clientName"></ion-input>
     </ion-item> 
     <ion-item>
       <ion-label floating>About Project</ion-label>
-      <ion-textarea type="text" name="aboutProject" required ngModel></ion-textarea>
-    </ion-item>
-    <ion-item>
-      <ion-label>Start Date</ion-label>
-      <ion-datetime ngModel name="startDate" required displayFormat="MM/DD/YYYY"></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>End Date</ion-label>
-      <ion-datetime ngModel name="endDate" required displayFormat="MM/DD/YYYY"></ion-datetime>
+      <ion-textarea type="text" formControlName="aboutProject"></ion-textarea>
     </ion-item>
   </ion-list>
-  <button ion-button type="submit" block [disabled]="!f.valid">
-    Add Project
+
+
+  <button ion-button type="submit" block >
+    Edit Project
   </button>
+
 </form>
-<p>{{date}}</p>
 </ion-content>

@@ -68,16 +68,19 @@ export class StopTimingPage {
     // this.totalTimeSec=Math.floor(value%60);
     
     this.totalSec=parseInt(this.navParams.get('totalTime'));
-    let t1=0;
-    let minutes=this.totalSec;
-    while(1){
-      minutes=Math.floor(minutes/60);
-    if(minutes<60){
-      break;
-    }
-    t1++;
-    }
-    let seconds=Math.floor(this.totalSec%60);
+    let t1=Math.floor(this.totalSec/3600);
+    let t=this.totalSec%3600;
+    let minutes=Math.floor(t/60);
+    // let t1=0;
+    // let minutes=this.totalSec;
+    // while(1){
+    //   minutes=Math.floor(minutes/60);
+    // if(minutes<60){
+    //   break;
+    // }
+    // t1++;
+    // }
+    let seconds=Math.floor(t%60);
 
     this.totalTimeMin=minutes;
     this.totalTimeHrs=t1;

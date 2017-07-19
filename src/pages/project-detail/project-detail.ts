@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, ActionSheetController } from 'ioni
 import {WeekModel} from '../../models/WeekModel';
 import{ProjectModel} from '../../models/ProjectModel';
 import {ConversionProvider} from '../../providers/conversion/conversion';
+import {ProjectProvider} from '../../providers/project/project';
 /**
  * Generated class for the ProjectDetailPage page.
  *
@@ -22,7 +23,7 @@ export class ProjectDetailPage implements OnInit {
   project=new ProjectModel('','','','','','',0,0,0,[]);
   index:number=0;
   constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl:ActionSheetController,
-  public conversionProvider:ConversionProvider) {
+  public conversionProvider:ConversionProvider,public projectProvider:ProjectProvider) {
   }
      ngOnInit(){
        this.project=this.navParams.get('project');
@@ -53,13 +54,21 @@ export class ProjectDetailPage implements OnInit {
   //   }
    }
 
+   ionViewWillLeave(){
+     this.projectProvider.updateProject(this.index,this.project,this.project.name,this.project.clientName,
+      this.project.aboutProject);
+   }
+
   goToWeekDetail(week:WeekModel){
     console.log(week);
+    this.goToWeek(week,this.project,this.index)
     // this.navCtrl.push('weekDetail',{week});
     // console.log("Week.name="+week.name);
     // console.log("Week.startDate="+week.startDate);
     // console.log("Week.days="+week.days);
-    this.navCtrl.push('weekDetail',{name:week.name,startDate:week.startDate,days:week.days});
+  }
+  goToWeek(week,project,index){
+    this.navCtrl.push('weekDetail',{name:week.name,startDate:week.startDate,days:week.days,project:project,index:index});
   }
 
   detail(week){

@@ -14,7 +14,7 @@ export class WeekModel{
         
         for(let i=0;i<numberOfDays;i++){
             var currentDate=new Date(startDate);
-            let day=new DateModel(weekday[currentDate.getDay()],currentDate);
+            let day=new DateModel(weekday[currentDate.getDay()],currentDate.getTime(),currentDate.getTime());
             startDate.setDate(startDate.getDate()+1);
             days.push(day);
         }

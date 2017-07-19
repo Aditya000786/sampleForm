@@ -1,7 +1,8 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController,ModalController,ActionSheetController } from 'ionic-angular';
 
 import {WeekModel} from '../../models/WeekModel';
+import {ProjectModel} from '../../models/ProjectModel';
 import {TimerProvider} from '../../providers/timer/timer';
 import {ConversionProvider} from '../../providers/conversion/conversion';
 /**
@@ -17,10 +18,15 @@ import {ConversionProvider} from '../../providers/conversion/conversion';
   selector: 'page-week-detail',
   templateUrl: 'week-detail.html',
 })
+
 export class WeekDetailPage implements OnInit {
   
+  project=new ProjectModel('','','','','','',0,0,0,[]);
+  index:number=0;
   week:WeekModel=new WeekModel('',new Date(),7);
   ngOnInit(){
+    this.project=this.navParams.get('project');
+    this.index=this.navParams.get('index');
     this.week.name=this.navParams.get('name');
     this.week.startDate=this.navParams.get('startDate');
     this.week.days=this.navParams.get('days');
@@ -66,13 +72,14 @@ export class WeekDetailPage implements OnInit {
     }
 
   ionViewDidLoad() {
+    this.timerProvider.load(this.week.days);
     // console.log('ionViewDidLoad WeekDetailPage');
   }
 
   toggleTimer(day){
     if(!day.dayActive){
       if(!this.timerProvider.timerActive){
-        this.timerProvider.startTimer(day);
+        this.timerProvider.startTimer(day,false,this.project,this.index);
       }
        else {
  
@@ -87,7 +94,7 @@ export class WeekDetailPage implements OnInit {
             }
     }
     else{
-      let totalTime= this.timerProvider.stopTimer(day);
+      let totalTime= this.timerProvider.stopTimer(day,this.project,this.index);
       console.log("TotalTime="+totalTime);
       let modal = this.modalCtrl.create('stop', {
                 totalTime:totalTime
@@ -103,5 +110,4 @@ export class WeekDetailPage implements OnInit {
               modal.present();
     }
   }
-
 }

@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { NavController,ActionSheetController } from 'ionic-angular';
 import {ConversionProvider} from '../../providers/conversion/conversion';
 import {ProjectProvider} from '../../providers/project/project';
+import {AuthProvider} from '../../providers/auth/auth';
 import {ProjectModel} from '../../models/ProjectModel';
 import {WeekModel} from '../../models/WeekModel';
 @Component({
@@ -12,7 +13,7 @@ export class HomePage implements OnInit {
   projects:ProjectModel[]=[];
   isThereAnyProject:boolean;
   constructor(public navCtrl: NavController,public projectProvider:ProjectProvider,public actionSheetCtrl:ActionSheetController,
-  public conversionProvider:ConversionProvider) {
+  public conversionProvider:ConversionProvider,public authProvider:AuthProvider) {
   }
 
     ionViewWillEnter(){
@@ -147,6 +148,10 @@ export class HomePage implements OnInit {
     ]
   });
   actionSheet.present();
+  }
+
+  logout(){
+    this.authProvider.logoutUser();
   }
 
   goToProject(project,index){

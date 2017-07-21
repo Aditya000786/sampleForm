@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
     this.projectProvider.getProjectList().on('value', snapshot => {
     this.projects= [];
     snapshot.forEach( snap => {
-      // console.log(snap.val());
+      console.log(snap.val());
       // console.log(snap.val().week.length);
       this.projects.push({
         id: snap.key,
@@ -35,6 +35,7 @@ export class HomePage implements OnInit {
         weeks:this.conversionProvider.getWeek(snap.val().week)
         // weeks:snap.val().week
       });
+      console.log("projects="+this.projects)
       return false
     });
   });
@@ -45,6 +46,7 @@ export class HomePage implements OnInit {
       // console.log(this.isThereAnyProject);
     }
     else{
+      // console.log("projects="+this.projects)
       // console.log("Project.length="+this.projects.length);
       this.isThereAnyProject=true;
     }

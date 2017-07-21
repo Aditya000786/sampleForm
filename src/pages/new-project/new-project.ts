@@ -54,7 +54,7 @@ export class NewProjectPage implements OnInit{
     let i=0;
 
     for(i=0;i<numberOfWeeks;i++){
-
+      console.log("numberOfWeeks="+numberOfWeeks);
       let name="Week "+(i+1);
       var nextDate=new Date(startDate);
       let week=new WeekModel(name,nextDate,7);
@@ -64,6 +64,7 @@ export class NewProjectPage implements OnInit{
   }
   
     if(lastWeek>0){
+      console.log("lastWeek="+lastWeek);
       let name="Week "+(i+1);
       let week=new WeekModel(name,startDate,lastWeek);
       weeks.push(week);
@@ -73,7 +74,5 @@ export class NewProjectPage implements OnInit{
     form.value.endDate,weeks);
     this.navCtrl.pop();
     
-
-
   }
 }

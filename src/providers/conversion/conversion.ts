@@ -1,4 +1,5 @@
 import {WeekModel} from '../../models/WeekModel';
+import {WeekModel2} from '../../models/WeekModel2';
 import {FirebaseWeekModel} from '../../models/FirebaseWeekModel';
 export class ConversionProvider {
 
@@ -45,7 +46,7 @@ export class ConversionProvider {
 
   getFirebaseWeek(week:WeekModel[]):FirebaseWeekModel[]{
     let firebaseWeeks:FirebaseWeekModel[]=[];
-    for(let i=-0;i<week.length;i++){
+    for(let i=0;i<week.length;i++){
       let firebaseWeek=new FirebaseWeekModel(week[i].name,week[i].startDate.getTime(),week[i].numberOfDays,
       week[i].totalSeconds,week[i].chargedSeconds,week[i].unChargedSeconds,week[i].days);
       firebaseWeeks.push(firebaseWeek);
@@ -54,12 +55,19 @@ export class ConversionProvider {
   }
 
   getWeek(firebaseWeeks:FirebaseWeekModel[]):WeekModel[]{
+    console.log("getWeeksIn");
     let weeks:WeekModel[]=[];
     for(let i=0;i<firebaseWeeks.length;i++){
-      let week=new WeekModel(firebaseWeeks[i].name,new Date(firebaseWeeks[i].startDate),firebaseWeeks[i].numberOfDays,
-    firebaseWeeks[i].totalSeconds,firebaseWeeks[i].chargedSeconds,firebaseWeeks[i].unChargedSeconds,firebaseWeeks[i].days);
+      
+          console.log("firebaseW="+firebaseWeeks[i].days);
+      let week=new WeekModel2(firebaseWeeks[i].name,new Date(firebaseWeeks[i].startDate),firebaseWeeks[i].numberOfDays,
+    firebaseWeeks[i].totalSeconds,firebaseWeeks[i].chargedSeconds,firebaseWeeks[i].unChargedSeconds,
+    firebaseWeeks[i].days);
+    console.log(week);
     weeks.push(week);
     }
+  console.log("weeks="+weeks)
+  console.log("getWeeksOut");
   return weeks.slice();
   }
 

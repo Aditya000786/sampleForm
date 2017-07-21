@@ -67,6 +67,7 @@ export class ProjectProvider {
     });
     var projectId=firebaseProject.key;
     console.log(projectId);
+    console.log("addProjectDopne");
   }
 
   updateProject(index:number,project:ProjectModel,name:string,clientName:string,aboutProject:string){

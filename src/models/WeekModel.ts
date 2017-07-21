@@ -11,13 +11,16 @@ export class WeekModel{
         weekday[4] = "Thursday";
         weekday[5] = "Friday";
         weekday[6] = "Saturday";
-        
+        // days=[];
         for(let i=0;i<numberOfDays;i++){
+            console.log("numberOFDasy="+numberOfDays);
+            console.log("i="+i);
             var currentDate=new Date(startDate);
             let day=new DateModel(weekday[currentDate.getDay()],currentDate.getTime(),currentDate.getTime());
             startDate.setDate(startDate.getDate()+1);
             days.push(day);
         }
+        console.log("Out of WeekModel");
         startDate.setDate(startDate.getDate()-numberOfDays);    
         
         // console.log("startDate="+startDate);
